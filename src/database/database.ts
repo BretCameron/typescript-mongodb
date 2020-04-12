@@ -1,11 +1,12 @@
-import * as Mongoose from "mongoose";
-import { UserModel } from "./users/users.model";
+import * as Mongoose from 'mongoose';
+import { UserModel } from './users/users.model';
 
 let database: Mongoose.Connection;
 
 export const connect = () => {
+  // add your own uri below
   const uri =
-    "mongodb+srv://test:test@cluster0-v6q0g.mongodb.net/test?retryWrites=true&w=majority";
+    'mongodb+srv://<username>:<password>@cluster0-v6q0g.mongodb.net/test?retryWrites=true&w=majority';
 
   if (database) {
     return;
@@ -20,12 +21,12 @@ export const connect = () => {
 
   database = Mongoose.connection;
 
-  database.once("open", async () => {
-    console.log("Connected to database");
+  database.once('open', async () => {
+    console.log('Connected to database');
   });
 
-  database.on("error", () => {
-    console.log("Error connecting to database");
+  database.on('error', () => {
+    console.log('Error connecting to database');
   });
 
   return {
