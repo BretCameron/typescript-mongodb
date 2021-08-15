@@ -1,13 +1,14 @@
-import { IUserDocument, IUserModel } from "./users.types";
+import { IUserDocument } from "./users.types";
 
-export async function findOneOrCreate(
-  this: IUserModel,
-  {
-    firstName,
-    lastName,
-    age,
-  }: { firstName: string; lastName: string; age: number }
-): Promise<IUserDocument> {
+export async function findOneOrCreate({
+  firstName,
+  lastName,
+  age,
+}: {
+  firstName: string;
+  lastName: string;
+  age: number;
+}) {
   const record = await this.findOne({ firstName, lastName, age });
   if (record) {
     return record;
@@ -17,7 +18,6 @@ export async function findOneOrCreate(
 }
 
 export async function findByAge(
-  this: IUserModel,
   min?: number,
   max?: number
 ): Promise<IUserDocument[]> {
