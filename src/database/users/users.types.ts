@@ -14,17 +14,14 @@ export interface IUserDocument extends IUser, Document {
 }
 
 export interface IUserModel extends Model<IUserDocument> {
-  findOneOrCreate: (
-    this: IUserModel,
-    {
-      firstName,
-      lastName,
-      age,
-    }: { firstName: string; lastName: string; age: number }
-  ) => Promise<IUserDocument>;
-  findByAge: (
-    this: IUserModel,
-    min?: number,
-    max?: number
-  ) => Promise<IUserDocument[]>;
+  findOneOrCreate: ({
+    firstName,
+    lastName,
+    age,
+  }: {
+    firstName: string;
+    lastName: string;
+    age: number;
+  }) => Promise<IUserDocument>;
+  findByAge: (min?: number, max?: number) => Promise<IUserDocument[]>;
 }
